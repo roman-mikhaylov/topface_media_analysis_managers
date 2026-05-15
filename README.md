@@ -66,24 +66,24 @@ Department‑level coefficients:
 
 The same formulas are applied at the account‑manager level, filtering data by AM. 
 
-## Repository structure
+### Repository structure
 
 ```text
 topface_media_analysis_managers/
-  data/
-    financial_raw.csv          # raw financial export
-    prolongations_raw.csv      # contracts and responsible AMs
-    ...                        # normalized CSVs are generated automatically
-  out/
-    department_from_prol_2023.csv
-    am_from_prol_2023.csv
-    am_from_prol_k1_pivot_2023.csv
-    am_from_prol_k2_pivot_2023.csv
-  py/
-    manager_analysis.py        # main analysis script
-  code_and_logic.md            # detailed logic and commented code
-  README.md
+  README.md                # main project description (EN)
+  README.ru.md             # project description in Russian
+  AD_test.md               # original task description (text, RU)
+  code_and_logic.md        # detailed explanation of the task and solution logic (RU)
+
+  data/                    # input and intermediate datasets
+  out/                     # generated reports (CSV/Excel)
+  py/                      # Python scripts for the analysis pipeline
+  report/                  # report artifacts and links for management
+  task_materials/          # original Excel files and helper materials from the task
 ```
+
+
+
 
 
 - `code_and_logic.md` – full explanation of business rules, edge cases and all transformations used in the pipeline.  

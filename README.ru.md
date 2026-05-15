@@ -59,23 +59,20 @@
 
 На уровне AM формулы те же, но в разрезе конкретного менеджера. 
 
-## Структура репозитория
+### Структура репозитория
 
 ```text
 topface_media_analysis_managers/
-  data/
-    financial_raw.csv
-    prolongations_raw.csv
-    ... (нормализованные *.csv создаются автоматически)
-  out/
-    department_from_prol_2023.csv
-    am_from_prol_2023.csv
-    am_from_prol_k1_pivot_2023.csv
-    am_from_prol_k2_pivot_2023.csv
-  py/
-    manager_analysis.py
-  code_and_logic.md
-  README.md
+  README.md                # основное описание проекта (EN)
+  README.ru.md             # описание проекта на русском
+  AD_test.md               # текст исходного задания (RU)
+  code_and_logic.md        # подробное описание постановки и логики решения (RU)
+
+  data/                    # входные и промежуточные данные
+  out/                     # сформированные отчёты (CSV/Excel)
+  py/                      # Python-скрипты аналитического пайплайна
+  report/                  # артефакты и ссылки на отчёт для руководителя
+  task_materials/          # исходные Excel и вспомогательные материалы задачи
 ```
 
 
