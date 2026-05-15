@@ -215,7 +215,7 @@ The executive‑level report is built in Excel / Google Sheets based on the CSV 
 
 
 ```markdown
-- `report/cREADME.md` — management report with dashboards based on the analysis results.
+- `report/README.md` — management report with dashboards based on the analysis results.
 ```
 
 ***
