@@ -149,9 +149,20 @@ topface_media_analysis_managers/
     financial_raw.csv
     prolongations_raw.csv
 ```
+### Data (`data/`)
 
+- `data/raw/` – raw CSV exports from finance and CRM:
+  - `financial_raw.csv`
+  - `prolongations_raw.csv`
+- `data/intermediate/` – normalized / cleaned tables produced by the pipeline:
+  - `financial_long_clean.csv`
+  - `prolongations_norm.csv`
+- `data/model/` – example fact/model tables:
+  - `model_projects_clean.csv`
+  - `fact_projects.csv`
 
 ### 5. Run the analysis
+
 
 From the repository root, with the virtual environment activated:
 
@@ -167,16 +178,31 @@ The script will:
 - compute bases and prolongation amounts (K1/K2) per month for the department and each AM;  
 - write aggregated results into the `out/` folder. 
 
+### Python scripts (`py/`)
+
+There are two ways to run the pipeline:
+
+- `manager_analysis.py` – single entry point that runs the full analysis (recommended for most cases).
+- Step-by-step scripts:
+  - `01_normalize_financial.py` – clean and normalize raw financial data.
+  - `02_normalize_prolongations.py` – clean and normalize prolongation events.
+  - `03_build_fact.py` – build the fact table joining finance and prolongations.
+  - `04_report_department.py` – aggregate results by department.
+  - `05_report_am.py` – aggregate results by account manager.
+  - `06_report_am_pivots.py` – build K1/K2 pivot tables for managers.
+
+Additional helper and experimental scripts are kept in `py/archive/` for reference.
+
+
 ### 6. Output files
+### Outputs (`out/`)
 
-After successful execution, the following files are created in `out/`:
-
-- `department_from_prol_2023.csv` – bases and K1/K2 coefficients per month for the whole department;  
-- `am_from_prol_2023.csv` – the same metrics by account manager × month;  
-- `am_from_prol_k1_pivot_2023.csv` – K1 matrix (rows: AMs, columns: months);  
-- `am_from_prol_k2_pivot_2023.csv` – K2 matrix (rows: AMs, columns: months). [github]
-
-These files are used as data sources for the final Excel / Google Sheets management report and dashboards. 
+- `out/core/` – main reports used in the case study:
+  - `department_from_prol_2023.csv`
+  - `am_from_prol_2023.csv`
+  - `am_from_prol_k1_pivot_2023.csv`
+  - `am_from_prol_k2_pivot_2023.csv`
+- `out/extra/` – additional reports and exploratory metrics (kept for reference).
 
 ## Management report
 
@@ -186,10 +212,10 @@ The executive‑level report is built in Excel / Google Sheets based on the CSV 
 - sheet “Account managers” – K1/K2 metrics per AM;  
 - dashboards – charts comparing managers, tracking month‑over‑month changes and summarizing annual performance. 
 
-The final Excel file (for example `report/contract_prolongation_report_2023.xlsx`) can be stored in the repository and linked from this README, e.g.:
+
 
 ```markdown
-- `report/contract_prolongation_report_2023.xlsx` — management report with dashboards based on the analysis results.
+- `report/cREADME.md` — management report with dashboards based on the analysis results.
 ```
 
 ***
